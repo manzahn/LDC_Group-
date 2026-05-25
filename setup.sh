@@ -15,7 +15,7 @@ if ! command -v conda >/dev/null 2>&1; then
   echo "  https://docs.conda.io/en/latest/miniconda.html"
   exit 1
 fi
-
+https://github.com/manzahn/LDC_Group-
 # 2. Create the epa141a conda env (skip if it exists)
 if conda env list | awk '{print $1}' | grep -qx "epa141a"; then
   echo "==> Conda env 'epa141a' already exists — skipping create."
