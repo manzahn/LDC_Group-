@@ -17,12 +17,12 @@
 # ── SLURM directives ──────────────────────────────────────────────────────────
 #SBATCH --job-name="A5_JUSTICE_%a"
 #SBATCH --time=04:00:00
-#SBATCH --partition=compute
+#SBATCH --partition=compute-p1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --mem-per-cpu=3968M
 #SBATCH --array=1-5
-#SBATCH --account=education-tpm-msc-epa
+#SBATCH --account=education-tpm-msc-ie
 #SBATCH --output=results/logs/seed_%a_%j.out
 #SBATCH --error=results/logs/seed_%a_%j.err
 
