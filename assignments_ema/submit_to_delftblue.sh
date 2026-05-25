@@ -18,7 +18,6 @@
 #SBATCH --job-name="A5_JUSTICE_%a"
 #SBATCH --time=04:00:00
 #SBATCH --partition=compute
-#SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --mem-per-cpu=3968M
