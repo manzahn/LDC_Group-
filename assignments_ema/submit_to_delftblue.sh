@@ -39,7 +39,7 @@ N_ENSEMBLES=50     # FAIR ensemble members (5× more than local run — HPC can 
 POPULATION=100     # MOEA population size
 
 # ── Environment setup ─────────────────────────────────────────────────────────
-module load 2023r1
+module load 2023r1-intel
 module load miniconda3
 
 unset CONDA_SHLVL
@@ -58,7 +58,7 @@ echo "========================================================"
 
 mkdir -p results/logs
 
-python model_answers_ema/run_optimization_local.py \
+python assignments_ema/run_optimization_local.py \
     --seeds $SEED \
     --nfe $NFE \
     --n_ensembles $N_ENSEMBLES \

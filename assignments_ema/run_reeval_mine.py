@@ -96,9 +96,15 @@ def model_wrapper_reeval(**kwargs) -> tuple:
     ensemble_index = int(kwargs.pop("climate_ensemble_index"))
 
     rbf     = RBF(n_rbfs=N_RBFS, n_inputs=N_INPUTS, n_outputs=N_REGIONS)
+<<<<<<< HEAD
+    centers = np.array([kwargs.pop(f"center {i}") for i in range(C_SHAPE[0])])
+    radii   = np.array([kwargs.pop(f"radii {i}")  for i in range(R_SHAPE[0])])
+    weights = np.array([kwargs.pop(f"weights {i}") for i in range(W_SHAPE[0])])
+=======
     centers = np.array([kwargs.pop(f"center_{i}") for i in range(C_SHAPE[0])])
     radii   = np.array([kwargs.pop(f"radii_{i}")  for i in range(R_SHAPE[0])])
     weights = np.array([kwargs.pop(f"weights_{i}") for i in range(W_SHAPE[0])])
+>>>>>>> upstream/main
     rbf.set_decision_vars(np.concatenate([centers, radii, weights]))
 
     constraint = EmissionControlConstraint(
@@ -184,7 +190,10 @@ if __name__ == "__main__":
         print(f"Grand reference set not found — falling back to {ref_path}")
 
     ref_set  = pd.read_csv(ref_path)
+<<<<<<< HEAD
+=======
     ref_set.columns = [c.replace(" ", "_") for c in ref_set.columns]
+>>>>>>> upstream/main
     ref_set  = ref_set[ref_set["welfare"] < 1e5].reset_index(drop=True)
     OPT_OBJECTIVES = ["welfare", "fraction_above_threshold",
                       "welfare_loss_damage", "welfare_loss_abatement"]
@@ -210,7 +219,11 @@ if __name__ == "__main__":
     # ── Build EMA objects ──────────────────────────────────────────────────────
     from ema_workbench import (
         Model, RealParameter, IntegerParameter, ScalarOutcome,
+<<<<<<< HEAD
+        Policy, Scenario, MultiprocessingEvaluator, ema_logging,
+=======
         Sample, MultiprocessingEvaluator, ema_logging,
+>>>>>>> upstream/main
     )
     ema_logging.log_to_stderr(ema_logging.INFO)
 
@@ -220,9 +233,15 @@ if __name__ == "__main__":
     n_cr = C_SHAPE[0]
     n_w  = W_SHAPE[0]
     ema_model.levers = (
+<<<<<<< HEAD
+        [RealParameter(f"center {i}", -1.0, 1.0) for i in range(n_cr)]
+        + [RealParameter(f"radii {i}",  0.0, 1.0) for i in range(n_cr)]
+        + [RealParameter(f"weights {i}", 0.0, 1.0) for i in range(n_w)]
+=======
         [RealParameter(f"center_{i}", -1.0, 1.0) for i in range(n_cr)]
         + [RealParameter(f"radii_{i}",  0.0, 1.0) for i in range(n_cr)]
         + [RealParameter(f"weights_{i}", 0.0, 1.0) for i in range(n_w)]
+>>>>>>> upstream/main
     )
     ema_model.outcomes = [
         ScalarOutcome("welfare",                kind=ScalarOutcome.MINIMIZE),
@@ -232,11 +251,19 @@ if __name__ == "__main__":
     ]
 
     policies  = [
+<<<<<<< HEAD
+        Policy(f"P{pi}", **{col: float(ref_set.iloc[pi][col]) for col in LEVER_COLS})
+        for pi in range(N_POLICIES)
+    ]
+    scenarios = [
+        Scenario(f"FAIR_{idx}", climate_ensemble_index=int(idx))
+=======
         Sample(f"P{pi}", **{col: float(ref_set.iloc[pi][col]) for col in LEVER_COLS})
         for pi in range(N_POLICIES)
     ]
     scenarios = [
         Sample(f"FAIR_{idx}", climate_ensemble_index=int(idx))
+>>>>>>> upstream/main
         for idx in SCENARIO_INDICES
     ]
 
