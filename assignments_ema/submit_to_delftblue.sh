@@ -21,7 +21,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --mem-per-cpu=3968M
-#SBATCH --array=1-5
+#SBATCH --array=1-10
 #SBATCH --account=education-tpm-msc-ie
 #SBATCH --output=results/logs/seed_%a_%j.out
 #SBATCH --error=results/logs/seed_%a_%j.err
@@ -29,7 +29,7 @@
 # ── Seeds — one per array task ────────────────────────────────────────────────
 # These match the defaults in run_optimization_local.py.
 # Do not change them unless your TA instructs you to.
-seeds=(0 9845531 1644652 3569126 6075612 521475)   # index 0 unused; array starts at 1
+seeds=(0 9845531 1644652 3569126 6075612 521475 837261 294853 748291 103948 567234)   # index 0 unused; array starts at 1
 SEED=${seeds[$SLURM_ARRAY_TASK_ID]}
 
 # ── Configuration ─────────────────────────────────────────────────────────────
