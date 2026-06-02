@@ -49,5 +49,5 @@ JUSTICE-main/
 archives/
 
 # ── Generated MOEA results (large, student-produced) ─────────────────────────
-assignments_ema/results/
+
 model_answers_ema/results/
