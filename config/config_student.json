@@ -14,5 +14,5 @@
     ],
     "temperature_year_of_interest": 2100,
     "reference_ssp_rcp_scenario_index": 5,
-    "welfare_function": "CONSUMPTION_CORRIDOR_PRIORITARIAN"
+    "welfare_function": "EGALITARIAN"
 }

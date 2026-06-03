@@ -21,7 +21,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --mem-per-cpu=3968M
-#SBATCH --array=1-10
+#SBATCH --array=1-5
 #SBATCH --account=education-tpm-msc-ie
 #SBATCH --output=results/logs/seed_%a_%j.out
 #SBATCH --error=results/logs/seed_%a_%j.err
